@@ -16,12 +16,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
+
         if (savedInstanceState == null) {
             //HeadFragment
             HeadPartFragment headPartFragment = new HeadPartFragment();
 
             headPartFragment.setmImageIds(AndroidDrawableAssest.getHead());
-            headPartFragment.setmListIndex(1);
+
+            // Get the correct index to access in the array of head images from the intent
+            // Set the default value to 0
+            int headIndex = getIntent().getIntExtra("headIndex", 0);
+            headPartFragment.setmListIndex(headIndex);
 
             FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -33,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
             BodyPartFragment bodyPartFragment = new BodyPartFragment();
 
             bodyPartFragment.setmImageIds(AndroidDrawableAssest.getBody());
-            bodyPartFragment.setmListIndex(1);
+            // Get the correct index to access in the array of head images from the intent
+            // Set the default value to 0
+            int bodyIndex = getIntent().getIntExtra("bodyIndex", 0);
+            bodyPartFragment.setmListIndex(bodyIndex);
 
             FragmentManager fragmentManager1 = getSupportFragmentManager();
             fragmentManager1.beginTransaction().add(R.id.bodyContainer, bodyPartFragment).commit();
@@ -44,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
             LegPartFragment legPartFragment = new LegPartFragment();
 
             legPartFragment.setmImageIds(AndroidDrawableAssest.getLegs());
-            legPartFragment.setmListIndex(1);
+            // Get the correct index to access in the array of head images from the intent
+            // Set the default value to 0
+            int legIndex = getIntent().getIntExtra("legIndex", 0);
+            legPartFragment.setmListIndex(legIndex);
 
             FragmentManager fragmentManager2 = getSupportFragmentManager();
             fragmentManager2.beginTransaction().add(R.id.legContainer, legPartFragment).commit();
